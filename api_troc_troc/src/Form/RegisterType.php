@@ -4,9 +4,11 @@ namespace App\Form;
 
 use App\DBAL\Types\SexeType;
 use App\Entity\User;
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,21 +26,20 @@ class RegisterType extends AbstractType
                     'Homme' => SexeType::MEN,
                     'Femme' => SexeType::WOMEN,
                     'Non précisé' => SexeType::NOT_PRECISE
-                ],
-                'constraints' => [
-                    new Assert\Choice([
-                        'choices' => [SexeType::MEN, SexeType::WOMEN, SexeType::NOT_PRECISE],
-                        'message' => 'Veuillez choisir un sexe valide.'
-                    ])
                 ]
-            ]);
+            ])
+            ->add('birthday', DateType::class)
+            ->add('streetNumber', NumberType::class)
+            ->add('streetName', TextType::class)
+            ->add('postalCode', TextType::class)
+            ->add('city', TextType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'csrf-protection' => false
+            'csrf_protection' => false
         ]);
     }
 }
