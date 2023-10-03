@@ -20,6 +20,7 @@ class RegisterController extends AbstractController
         $data = json_decode($request->getContent(), true);
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
+        dump($data);
 
         $form->submit($data);
          if ($form->isSubmitted() && $form->isValid())
@@ -29,6 +30,6 @@ class RegisterController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
         }
-        return new JsonResponse(['status' => 'User created!'], Response::HTTP_CREATED);
+        return new JsonResponse(['status' => 'User created !'], Response::HTTP_CREATED);
      }
 }
