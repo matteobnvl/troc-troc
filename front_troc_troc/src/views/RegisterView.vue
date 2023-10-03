@@ -26,11 +26,18 @@
                 required
               ></v-text-field>
               <v-text-field
-                v-model="sexe"
-                label="Sexe"
-                type="sexe"
+                v-model="password"
+                label="Mot de passe"
+                type="password"
                 required
               ></v-text-field>
+              <v-select
+                v-model="sexe"
+                :items="['men', 'woman', 'not-precise']"
+                :rules="[v => !!v || 'Un choix est requis']"
+                label="Sexe"
+                required
+              ></v-select>
               <v-text-field
                 v-model="birthday"
                 label="Date de naissance"
@@ -75,6 +82,7 @@
 <style> 
 #form {
   width: 140%;
+  margin-top: 5%;
 }
 
 </style>
