@@ -28,8 +28,11 @@ class RegisterType extends AbstractType
                     'Non précisé' => SexeType::NOT_PRECISE
                 ]
             ])
-            ->add('birthday', DateType::class)
-            ->add('streetNumber', NumberType::class)
+            ->add('birthday', DateType::class, [
+                'widget' => 'single_text',
+                'input' => 'datetime',
+                'format' => 'yyyy-MM-dd'
+            ])
             ->add('streetName', TextType::class)
             ->add('postalCode', TextType::class)
             ->add('city', TextType::class);

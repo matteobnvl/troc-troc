@@ -135,7 +135,8 @@ export default {
       }
     },
     async submitForm () {
-      const response = await this.$api.register(this.formData)
+      console.log(this.data)
+      const response = await this.$api.register(this.data)
       if(response.success) {
         console.log(response)
       } else {
