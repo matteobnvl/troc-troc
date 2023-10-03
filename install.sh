@@ -26,7 +26,7 @@ echo "Installation du projet Symfony..."
 
 composer install
 
-echo "Génération clé JWT...
+echo "Génération clé JWT..."
 
 php bin/console lexik:jwt:generate-keypair
 
